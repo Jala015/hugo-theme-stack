@@ -1,0 +1,115 @@
+<div style="position: sticky; top: 0; z-index: 60">
+  <header style="background: white; box-shadow: var(--shadow-l2); position: relative">
+    <div class="menu-principal">
+      <a href="/" aria-current="page"
+        ><img
+          src="/img/logo.svg"
+          class="g-image"
+          style="height: 30px; margin-top: 13px; margin-bottom: 13px"
+          data-v-9b60b4b2=""
+      /></a>
+      <nav>
+        <ul class="lista">
+          <li>
+            <a
+              href="https://biosensu.com/#sobre"
+              class="item-lista"
+              >Sobre</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://biosensu.com/#equipe"
+              class="item-lista"
+              >Equipe</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://biosensu.com/#servicos"
+              class="item-lista"
+              >Serviços</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://biosensu.com/#clientes"
+              class="item-lista"
+              >Clientes</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://biosensu.com/#contato"
+              class="item-lista"
+              >Contato</a
+            >
+          </li>
+          <li class="item-ativo">
+            <a
+              class="item-lista active"
+              >Blog</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<style>
+  .menu-principal {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    color: rgb(0, 139, 54);
+    align-items: center;
+    height: 100%;
+    justify-content: space-between;
+    margin-left: 0.77rem;
+    margin-right: 0.77rem;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+  }
+  @media (min-width: 1024px){}
+  .menu-principal {
+    margin-left: 6rem;
+    margin-right: 6rem;
+  }
+
+  .lista {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: 'Public Sans', Courier, monospace;
+
+  }
+
+  .lista > * + * {
+    margin-left: 36px;
+  }
+
+  .item-lista{
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .2s;
+    transition-property: color;
+    color: inherit;
+    text-decoration: inherit
+}
+
+.item-ativo{
+    color: var(--accent-color);
+}
+
+.item-ativo:hover a{
+    color: var(--accent-color);
+}
+</style>

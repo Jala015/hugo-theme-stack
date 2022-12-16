@@ -30,7 +30,7 @@
 .hamburger.is-active .hamburger-inner,
 .hamburger.is-active .hamburger-inner::before,
 .hamburger.is-active .hamburger-inner::after {
-    background-color: #000;
+    background-color:#fff;
 }
 
 .hamburger-box {
@@ -51,7 +51,7 @@
 .hamburger-inner::after {
     width: 30px;
     height: 2px;
-    background-color: var(--card-text-color-main);
+    background-color: #fff;
     border-radius: 4px;
     position: absolute;
     transition-property: transform;
@@ -134,7 +134,7 @@
     overflow-y: auto;
     flex-grow: 1;
     font-size: 1.4rem;
-    background-color: var(--card-background);
+    background-color: var(--accent-color-darker);
 
     box-shadow: var(--shadow-l1);
     display: none;

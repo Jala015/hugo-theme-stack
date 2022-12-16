@@ -45,11 +45,12 @@
     </header>
 
     {{- $subsections := .Sections -}}
+    
     {{- $pages := .Pages | complement $subsections -}}
     
     {{- if eq (len $pages) 0 -}}
         {{/* If there are no normal pages, display subsections in list style, with pagination */}}
-        {{/* This happens with taxonomies like categories or tags */}}
+        {{/* This happens with taxonomies like categorias or tags */}}
         {{- $pages = $subsections -}}
         {{- $subsections = slice -}}
     {{- end -}}

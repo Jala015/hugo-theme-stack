@@ -2,12 +2,12 @@
 {{- $limit := default 10 .Params.limit -}}
 <section class="widget tagCloud">
     <div class="widget-icon">
-        {{ partial "helper/icon" "categories" }}
+        {{ partial "helper/icon" "tag" }}
     </div>
-    <h2 class="widget-title section-title">{{ T "widget.categoriesCloud.title" }}</h2>
+    <h2 class="widget-title section-title" style="margin-top: 2px;">{{ T "widget.categoriesCloud.title" }}</h2>
 
     <div class="tagCloud-tags">
-        {{ range first $limit $context.Site.Taxonomies.categories.ByCount }}
+        {{ range first $limit $context.Site.Taxonomies.categorias.ByCount }}
             <a href="{{ .Page.RelPermalink }}" class="font_size_{{ .Count }}">
                 {{ .Page.Title }}
             </a>
