@@ -36,6 +36,8 @@
         {{ partial "comments/include" . }}
     {{ end }}
 
+     {{ partialCached "btnConheca" . }} 
+
     {{ partialCached "footer/footer" . }}
 
     {{ partialCached "article/components/photoswipe" . }}
