@@ -1,6 +1,6 @@
 <div class="article-details">
     {{ if .Params.categorias }}
-    <header class="article-category">
+    <header class="article-category" aria-label="categorias do artigo">
         {{ range (.GetTerms "categorias") }}
             <a href="{{ .RelPermalink }}" {{ with .Params.style }}style="background-color: {{ .background }}; color: {{ .color }};"{{ end }}>
                 {{ .LinkTitle }}
@@ -22,20 +22,20 @@
     {{ $showDate := not .Date.IsZero }}
     {{ $showFooter := or $showDate $showReadingTime }}
     {{ if $showFooter }}
-    <footer class="article-time">
+    <footer class="article-time" role="none">
         {{ if $showDate }}
-            <div>
+            <div role="none">
                 {{ partial "helper/icon" "date" }}
-                <time class="article-time--published">
+                <time class="article-time--published" aria-label="data de publicação">
                     {{- .Date.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
                 </time>
             </div>
         {{ end }}
 
         {{ if $showReadingTime }}
-            <div>
+            <div role="none">
                 {{ partial "helper/icon" "clock" }}
-                <time class="article-time--reading">
+                <time aria-label="tempo de leitura" class="article-time--reading">
                     {{ T "article.readingTime" .ReadingTime }}
                 </time>
             </div>

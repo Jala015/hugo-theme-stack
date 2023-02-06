@@ -1,11 +1,11 @@
-<article>
-    <a href="{{ .RelPermalink }}">
-        <div class="article-details">
-            <h2 class="article-title">
+<article role="none">
+    <a href="{{ .RelPermalink }}" aria-label="{{.Title}}">
+        <div class="article-details" role="none">
+            <h2 class="article-title" aria-hidden="true">
                 {{- .Title -}}
             </h2>
-            <footer class="article-time">
-                <time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>
+            <footer class="article-time" role="none">
+                <time aria-label="data de publicação" datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>
                     {{- .Date.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
                 </time>
             </footer>
@@ -13,7 +13,7 @@
 
         {{- $image := partialCached "helper/image" (dict "Context" . "Type" "articleList") .RelPermalink "articleList" -}}
         {{ if $image.exists }}
-            <div class="article-image">
+            <div class="article-image" aria-hidden="true">
                 {{ if $image.resource }}
                     {{- $Permalink := $image.resource.RelPermalink -}}
                     {{- $Width := $image.resource.Width -}}

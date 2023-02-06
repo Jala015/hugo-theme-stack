@@ -1,12 +1,12 @@
 {{ define "body-class" }}template-archives{{ end }}
 {{ define "main" }}
-    <header>
+    <header aria-label="lista de categorias">
         {{- $taxonomy := $.Site.GetPage "taxonomyTerm" "categorias" -}}
         {{- $terms := $taxonomy.Pages -}}
         {{ if $terms }}
-        <h2 class="section-title">{{  T "widget.categoriesCloud.title" }}</h2>
-        <div class="subsection-list">
-            <div class="article-list--tile">
+        <h2 aria-hidden="true" class="section-title">{{  T "widget.categoriesCloud.title" }}</h2>
+        <div class="subsection-list" role="none">
+            <div class="article-list--tile" role="none">
                 {{ range $terms }}
                     {{ partial "article-list/tile" (dict "context" . "size" "250x150" "Type" "taxonomy") }}
                 {{ end }}
@@ -21,8 +21,8 @@
 
     {{ range $filtered.GroupByDate "2006" }}
     {{ $id := lower (replace .Key " " "-") }}
-    <div class="archives-group" id="{{ $id }}">
-        <h2 class="archives-date section-title"><a href="{{ $.RelPermalink }}#{{ $id }}">{{ .Key }}</a></h2>
+    <div class="archives-group" id="{{ $id }}" aria-label="{{ .Key }}">
+        <h2 aria-hidden="true" class="archives-date section-title"><a href="{{ $.RelPermalink }}#{{ $id }}">{{ .Key }}</a></h2>
         <div class="article-list--compact">
             {{ range .Pages }}
                 {{ partial "article-list/compact" . }}

@@ -4,7 +4,7 @@
     {{ $filtered := ($pages | intersect $notHidden) }}
     {{ $pag := .Paginate ($filtered) }}
 
-    <section class="article-list">
+    <section class="article-list" aria-label="lista de artigos">
         {{ range $index, $element := $pag.Pages }}
             {{ partial "article-list/default" . }}
         {{ end }}

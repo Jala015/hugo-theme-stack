@@ -5,8 +5,8 @@
     {{- end -}}
 {{ end }}
 {{ define "main" }}
-<form action="{{ .Permalink }}" class="search-form"{{ with .OutputFormats.Get "json" -}} data-json="{{ .Permalink }}"{{- end }}>
-    <p>
+<form  aria-label="caixa de busca" action="{{ .Permalink }}" class="search-form"{{ with .OutputFormats.Get "json" -}} data-json="{{ .Permalink }}"{{- end }}>
+    <p role="none">
         <label>{{ T "search.title" }}</label>
         <input name="keyword" placeholder="{{ T `search.placeholder` }}" />
     </p>
@@ -16,9 +16,9 @@
     </button>
 </form>
 
-<div class="search-result">
+<div class="search-result" aria-label="resultado">
     <h3 class="search-result--title section-title"></h3>
-    <div class="search-result--list article-list--compact"></div>
+    <div role="none" class="search-result--list article-list--compact"></div>
 </div>
 
 <script>
