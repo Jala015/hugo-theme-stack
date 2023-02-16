@@ -58,6 +58,7 @@
         </ol>
     {{- end -}}
 
+
     <ol class="menu" id="main-menu" aria-label="Páginas do Blog">
         {{ $currentPage := . }}
         {{ range .Site.Menus.main }}
@@ -75,6 +76,8 @@
             </a>
         </li>
         {{ end }}
+
+
 
         <div class="menu-bottom-section">
             {{- $currentLanguageCode := .Language.Lang -}}
@@ -98,4 +101,6 @@
             {{ end }}
         </div>
     </ol>
+
+   
 </aside>
