@@ -1,9 +1,9 @@
 {{ $related := (where (.Site.RegularPages.Related .) "Params.hidden" "!=" true) | first 5 }}
 {{ with $related }}
-<aside class="related-content--wrapper">
-    <h2 class="section-title">{{ T "article.relatedContent" }}</h2>
-    <div class="related-content">
-        <div class="flex article-list--tile">
+<aside class="related-content--wrapper" aria-label="Artigos relacionados">
+    <h2 class="section-title" aria-hidden="true">{{ T "article.relatedContent" }}</h2>
+    <div class="related-content" role="none">
+        <div class="flex article-list--tile" role="none">
             {{ range . }}
                 {{ partial "article-list/tile" (dict "context" . "size" "250x150" "Type" "articleList") }}
             {{ end }}
