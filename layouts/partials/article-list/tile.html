@@ -1,42 +1,67 @@
-{{ $image := partialCached "helper/image" (dict "Context" .context "Type" .Type) .context.RelPermalink .Type }}
+{{ $image := partialCached "helper/image" (dict "Context" .context "Type" .Type)
+.context.RelPermalink .Type }}
 <article class="{{ if $image.exists }}has-image{{ end }}" role="none">
-    <a href="{{ .context.RelPermalink }}">
-        
-        {{ if $image.exists }}
-            <div class="article-image">
-                {{ if $image.resource }}
-                    {{- $imageRaw := $image.resource | resources.Fingerprint "md5" -}}
-                    {{- $Permalink := $imageRaw.RelPermalink -}}
-                    {{- $Width := $imageRaw.Width -}}
-                    {{- $Height := $imageRaw.Height -}}
+  <a href="{{ .context.RelPermalink }}">
+      <div class="article-image">
+    {{ if $image.exists }}
+      {{ if $image.resource }} {{- $imageRaw := $image.resource | resources.Fingerprint
+      "md5" -}} {{- $Permalink := $imageRaw.RelPermalink -}} {{- $Width := $imageRaw.Width
+      -}} {{- $Height := $imageRaw.Height -}} {{- if
+      .context.Site.Params.imageProcessing.cover.enabled -}} {{- $thumbnail :=
+      $imageRaw.Fill .size -}} {{- $Permalink = $thumbnail.RelPermalink -}} {{- $Width =
+      $thumbnail.Width -}} {{- $Height = $thumbnail.Height -}} {{- end -}}
 
-                    {{- if .context.Site.Params.imageProcessing.cover.enabled -}}
-                        {{- $thumbnail := $imageRaw.Fill .size -}}
-                        {{- $Permalink = $thumbnail.RelPermalink -}}
-                        {{- $Width = $thumbnail.Width -}}
-                        {{- $Height = $thumbnail.Height -}}
-                    {{- end -}}
-                    
-                    <img src="{{ $Permalink }}" 
-                        width="{{ $Width }}" 
-                        height="{{ $Height }}" 
-                        loading="lazy"
-                        alt="Featured image of post {{ .context.Title }}"
-                        {{ with .context.Slug }}data-key="{{ . }}" {{ end }}
-                        data-hash="{{ $imageRaw.Data.Integrity }}">
-                {{ else }}
-                    <img src="{{ $image.permalink }}" loading="lazy" data-key="{{ .context.Slug }}" data-hash="{{ $image.permalink }}"/>
-                {{ end }}
-            </div>
-        {{ end }}
+      <img
+        src="{{ $Permalink }}"
+        width="{{ $Width }}"
+        height="{{ $Height }}"
+        loading="lazy"
+        alt="Featured image of post {{ .context.Title }}"
+        {{
+        with
+        .context.Slug
+        }}data-key="{{ . }}"
+        {{
+        end
+        }}
+        data-hash="{{ $imageRaw.Data.Integrity }}"
+      />
+      {{ else }}
+      <div class="article-image">
+        <img
+          src="{{ $image.permalink }}"
+          loading="lazy"
+          data-key="{{ .context.Slug }}"
+          data-hash="{{ $image.permalink }}"
+        />
+      </div>
 
-        <div class="article-details" style="padding: 0;">
-            <div style="display: flex;
-            background: linear-gradient(11deg, rgba(4, 116, 43, 0.8) 0%, rgba(4, 104, 39, 0.4) 100%); ; height:100%; padding: 2rem;">
-                <h2 class="article-title">
-                    {{- .context.Title -}}
-                </h2>
-            </div>
-        </div>
-    </a>
+      {{ end }}
+      {{ else }}
+      
+      <img
+      src="/blog/img/categoria.jpg"
+      loading="lazy"
+      data-key="{{ .context.Slug }}" data-hash="/blog/img/categoria.jpg"
+      />
+      {{ end }}
+    </div>
+
+    <div class="article-details" style="padding: 0">
+      <div
+        style="
+          display: flex;
+          background: linear-gradient(
+            11deg,
+            rgba(4, 116, 43, 0.5) 0%,
+            rgba(4, 104, 39, 1) 100%
+          );
+          height: 100%;
+          padding: 2rem;
+        "
+      >
+        <h2 class="article-title" style="color:white; font-weight:bold">{{- .context.Title -}}</h2>
+      </div>
+    </div>
+  </a>
 </article>
