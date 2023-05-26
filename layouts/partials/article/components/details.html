@@ -1,21 +1,12 @@
 <div class="article-details">
-    {{ if .Params.categorias }}
-    <header class="article-category" aria-label="categorias do artigo">
-        {{ range (.GetTerms "categorias") }}
-            <a href="{{ .RelPermalink }}" {{ with .Params.style }}style="background-color: {{ .background }}; color: {{ .color }};"{{ end }}>
-                {{ .LinkTitle }}
-            </a>
-        {{ end }}
-    </header>
-    {{ end }}
-
+    
     <div class="article-title-wrapper">
         <h2 class="article-title">
             <a href="{{ .RelPermalink }}">
                 {{- .Title -}}
             </a>
         </h2>
-    
+        
     </div>
 
     {{ $showReadingTime := .Params.readingTime | default (.Site.Params.article.readingTime) }}
@@ -53,4 +44,15 @@
             </div>
         </footer>
     {{ end }}
+
+    {{ if .Params.categorias }}
+    <footer class="article-category" aria-label="categorias do artigo">
+        {{ range (.GetTerms "categorias") }}
+            <a href="{{ .RelPermalink }}" {{ with .Params.style }}style="background-color: {{ .background }}; color: {{ .color }};"{{ end }}>
+                {{ .LinkTitle }}
+            </a>
+        {{ end }}
+    </footer>
+    {{ end }}
+
 </div>
